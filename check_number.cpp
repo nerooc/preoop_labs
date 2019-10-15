@@ -17,34 +17,61 @@ char find_ctrl(const char *karta){
 
 	int ctrl;
 	
+		if(x==16){
+			for(int i = x - 1; i >= 0 ; i--){
 
-		for(int i = x - 1; i >= 0 ; i--){
-
-			if(!(i%2)){
+				if(!(i%2)){
 				 
-				 if((karta[i] - '0')*2 >= 10){
-					int k = (karta[i] - '0')*2;
-					sprintf(strtmp1, "%d", k); 
-					suma1 += (strtmp1[0]-'0') + (strtmp1[1]-'0');
+					 if((karta[i] - '0')*2 >= 10){
+						int k = (karta[i] - '0')*2;
+						sprintf(strtmp1, "%d", k); 
+						suma1 += (strtmp1[0]-'0') + (strtmp1[1]-'0');
 
-				 }
+					 }
 
-				 else{
-				 	suma1 += (karta[i] - '0')*2;
-				 }
+					 else{
+					 	suma1 += (karta[i] - '0')*2;
+					 }
 			
-			}  
+				}  
 
-			else{	
+				else{	
 				 
-				 	suma2 += (karta[i] - '0');
+					 	suma2 += (karta[i] - '0');
 				
 
+				}
 			}
 
-	
-	
-	}
+		}
+
+		else{
+			for(int i = (16-x-1); i >= 0 ; i--){
+
+				if(!(i%2)){
+				 
+					 if((karta[i] - '0')*2 >= 10){
+						int k = (karta[i] - '0')*2;
+						sprintf(strtmp1, "%d", k); 
+						suma1 += (strtmp1[0]-'0') + (strtmp1[1]-'0');
+
+					 }
+
+					 else{
+					 	suma1 += (karta[i] - '0')*2;
+					 }
+			
+				}  
+
+				else{	
+				 
+					 	suma2 += (karta[i] - '0');
+				
+
+				}
+			}
+			
+		}
 		
 	
 	suma = suma1 + suma2;	
