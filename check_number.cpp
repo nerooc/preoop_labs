@@ -12,20 +12,26 @@ char find_ctrl(const char *karta){
 	int suma1 = 0;
 	int suma2 = 0;
 
-	char *strtmp1;
 	
 
 	int ctrl;
-	
-		if(x==16){
+		
+		if(x == 16){
 			for(int i = x - 1; i >= 0 ; i--){
 
-				if(!(i%2)){
+				if(((i+1)%2) != 0){
 				 
 					 if((karta[i] - '0')*2 >= 10){
+
+						char *strtmp1;
+						strtmp1 = (char*)malloc(2*sizeof(char));
+					 	
 						int k = (karta[i] - '0')*2;
 						sprintf(strtmp1, "%d", k); 
+				
 						suma1 += (strtmp1[0]-'0') + (strtmp1[1]-'0');
+
+						free(strtmp1);
 
 					 }
 
@@ -38,7 +44,6 @@ char find_ctrl(const char *karta){
 				else{	
 				 
 					 	suma2 += (karta[i] - '0');
-				
 
 				}
 			}
@@ -46,14 +51,20 @@ char find_ctrl(const char *karta){
 		}
 
 		else{
-			for(int i = (16-x-1); i >= 0 ; i--){
+			for(int i = 16-(16-x) - 1; i >= 0 ; i--){
 
-				if(!(i%2)){
+				if(((i+1)%2)!=0){
 				 
 					 if((karta[i] - '0')*2 >= 10){
+
+					 	char *strtmp2;
+						strtmp2 = (char*)malloc(2*sizeof(char));
+						
 						int k = (karta[i] - '0')*2;
-						sprintf(strtmp1, "%d", k); 
-						suma1 += (strtmp1[0]-'0') + (strtmp1[1]-'0');
+						sprintf(strtmp2, "%d", k); 
+						suma1 += (strtmp2[0]-'0') + (strtmp2[1]-'0');
+
+						free(strtmp2);
 
 					 }
 
@@ -79,6 +90,7 @@ char find_ctrl(const char *karta){
 	ctrl = suma % 10;
 
 	strsuma = ctrl + '0';
+
 	
 	if(ctrl == 0){
 		return '0';
